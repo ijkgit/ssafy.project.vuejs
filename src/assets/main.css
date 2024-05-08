@@ -1,35 +1,103 @@
-@import './base.css';
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+/* 폰트 등록 */
+@font-face {
+	font-family: 'SOYOMapleRegularTTF';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleRegularTTF.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+@font-face {
+	font-family: 'SOYOMapleBoldTTF';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+@font-face {
+	font-family: 'TTHakgyoansimMulgyeolB';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_keris@1.0/TTHakgyoansimMulgyeolB.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+:root {
+	--primary-color: #4567D0;
+	--secondary-color: #7088F7;
+	--primary-color-dark: #054dc7;
+	--secondary-color-dark: #486df4;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+/* primary color button */
+#primary-button {
+	background-color: var(--primary-color);
+	border-color: var(--primary-color);
+}
+
+#primary-button:hover {
+	background-color: var(--primary-color-dark);
+	border-color: var(--primary-color-dark);
+}
+
+/* end */
+
+/* primary color outline button */
+#primary-outline-button {
+	color: var(--primary-color);
+	border-color: var(--primary-color);
+}
+
+#primary-outline-button:hover {
+	color: white;
+	background-color: var(--primary-color);
+	border-color: var(--primary-color);
+}
+
+/* end */
+
+/* secondary color button */
+#secondary-button {
+	background-color: var(--secondary-color);
+	border-color: var(--secondary-color);
+}
+
+#secondary-button:hover {
+	background-color: var(--secondary-color-dark);
+	border-color: var(--secondary-color-dark);
+}
+
+/* end */
+
+/* secondary color outline button */
+#secondary-outline-button {
+	color: var(--secondary-color);
+	border-color: var(--secondary-color);
+}
+
+#secondary-outline-button:hover {
+	color: white;
+	background-color: var(--secondary-color);
+	border-color: var(--secondary-color);
+}
+
+/* end */
+
+* {
+	font-family: 'SOYOMapleRegularTTF';
+}
+
+#header {
+	font-family: 'TTHakgyoansimMulgyeolB';
+	color: var(--primary-color);
+}
+
+#nav {
+	background-color: white;
+}
+
+#nav-list {
+	color: black;
+}
+
+#nav-list:hover {
+	color: var(--secondary-color);
 }
