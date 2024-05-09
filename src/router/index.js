@@ -1,5 +1,6 @@
 import HeaderMain from "@/components/common/HeaderMain.vue";
 import MainView from "@/components/main/MainView.vue";
+import MapView from "@/components/map/MapView.vue";
 import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
@@ -16,9 +17,9 @@ const router = createRouter({
           component: MainView,
         },
         {
-          path: "test",
-          name: "test",
-          component: MainView,
+          path: "map",
+          name: "map",
+          component: MapView,
         },
       ],
     },
