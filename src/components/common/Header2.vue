@@ -3,12 +3,13 @@ console.log("if u header2");
 </script>
 
 <template>
-  <div id="nav" class="navbar-expand-lg fixed-top border-bottom">
+  <!-- 상단 nav bar -->
+  <div id="nav" class="navbar-expand-lg border-bottom shadow-sm">
     <div class="container">
       <header class="d-flex align-items-center justify-content-around py-3">
-        <RouterLink to="/test" class="d-inline-flex link-body-emphasis text-decoration-none">
+        <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
           <h1 id="header">나들이</h1>
-        </RouterLink>
+        </a>
         <button
           class="navbar-toggler ms-2"
           type="button"
@@ -19,7 +20,7 @@ console.log("if u header2");
             xmlns="http://www.w3.org/2000/svg"
             width="30"
             height="30"
-            fill="white"
+            fill="black"
             class="bi bi-list"
             viewBox="0 0 16 16"
           >
@@ -77,7 +78,6 @@ console.log("if u header2");
             </button>
           </form>
           <!-- </c:if> -->
-
           <!-- <c:if test="${not empty login}"> -->
           <form id="signInSuccess" class="col-md-3 text-end">
             <button
