@@ -15,6 +15,11 @@ const router = createRouter({
           name: "main",
           component: MainView,
         },
+        {
+          path: "test",
+          name: "test",
+          component: MainView,
+        },
       ],
     },
     // {
