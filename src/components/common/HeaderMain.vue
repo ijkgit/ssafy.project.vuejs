@@ -57,47 +57,47 @@
               >
             </li>
           </ul>
-          <c:if test="${empty login}">
-            <form id="signInFail" class="ms-5">
-              <button
-                id="primary-outline-button"
-                type="button"
-                class="btn btn-outline-primary me-2"
-                onclick="javascript:goSignUp()"
-              >
-                회원가입
-              </button>
-              <button
-                id="primary-button"
-                type="button"
-                class="btn btn-primary"
-                onclick="javascript:goSignIn();"
-              >
-                로그인
-              </button>
-            </form>
-          </c:if>
+          <!-- <c:if test="${empty login}"> -->
+          <form id="signInFail" class="ms-5">
+            <button
+              id="primary-outline-button"
+              type="button"
+              class="btn btn-outline-primary me-2"
+              onclick="javascript:goSignUp()"
+            >
+              회원가입
+            </button>
+            <button
+              id="primary-button"
+              type="button"
+              class="btn btn-primary"
+              onclick="javascript:goSignIn();"
+            >
+              로그인
+            </button>
+          </form>
+          <!-- </c:if> -->
 
-          <c:if test="${not empty login}">
-            <form id="signInSuccess" class="col-md-3 text-end">
-              <button
-                id="primary-outline-button"
-                type="button"
-                class="btn btn-outline-primary me-2"
-                onclick="javascript:goMyPage();"
-              >
-                마이페이지
-              </button>
-              <button
-                id="primary-button"
-                type="button"
-                class="btn btn-primary"
-                onclick="javascript:goSignOut();"
-              >
-                로그아웃
-              </button>
-            </form>
-          </c:if>
+          <!-- <c:if test="${not empty login}"> -->
+          <form id="signInSuccess" class="col-md-3 text-end">
+            <button
+              id="primary-outline-button"
+              type="button"
+              class="btn btn-outline-primary me-2"
+              onclick="javascript:goMyPage();"
+            >
+              마이페이지
+            </button>
+            <button
+              id="primary-button"
+              type="button"
+              class="btn btn-primary"
+              onclick="javascript:goSignOut();"
+            >
+              로그아웃
+            </button>
+          </form>
+          <!-- </c:if> -->
         </div>
       </header>
     </div>
