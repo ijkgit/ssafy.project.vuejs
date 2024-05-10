@@ -1,4 +1,6 @@
 <script setup>
+import MapKakao from "@/components/map/item/MapKakao.vue";
+import MapTable from "@/components/map/item/MapTable.vue";
 import { ref, onMounted, watch } from "vue";
 import { Axios } from "@/util/http-commons.js";
 
@@ -6,11 +8,12 @@ const http = Axios("map");
 const sidos = ref([]);
 const guguns = ref([]);
 const searchData = ref({
-  areaCode: 0,
-  gugunCode: 0,
-  contentTypeId: 0,
+  areaCode: "0",
+  gugunCode: "0",
+  contentTypeId: "0",
   keyword: "",
 });
+const areas = ref([]);
 
 onMounted(() => {
   getSido();
@@ -45,7 +48,8 @@ const getGugun = () => {
 
 const search = () => {
   http.post("attractioninfo", searchData.value).then((response) => {
-    console.log(response);
+    areas.value = response.data;
+    console.log(areas);
   });
 };
 </script>
@@ -99,48 +103,8 @@ const search = () => {
         검색
       </button>
     </form>
-    <!-- kakao map start -->
-    <div id="map" class="mt-3" style="width: 100%; height: 600px"></div>
-    <!-- kakao map end -->
-    <!--  모달 -->
-    <div
-      class="modal fade"
-      id="myModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="myModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="myModalLabel"></h5>
-          </div>
-          <div class="modal-body">
-            <!-- 모달 내용 -->
-            <div class="d-flex flex-column align-items-center" id="modalContent"></div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <table class="table table-striped" style="display: none">
-        <thead>
-          <tr>
-            <th>대표이미지</th>
-            <th>관광지명</th>
-            <th>주소</th>
-            <th>위도</th>
-            <th>경도</th>
-          </tr>
-        </thead>
-        <tbody id="trip-list"></tbody>
-      </table>
-    </div>
-    <!-- 관광지 검색 end -->
+    <MapKakao :areas="areas" :contentTypeId="searchData.contentTypeId" />
+    <MapTable :areas="areas" />
   </div>
 </template>
 
