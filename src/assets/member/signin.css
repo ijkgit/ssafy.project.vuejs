@@ -1,0 +1,37 @@
+main.form-signin {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 70vh;
+	/* 화면 전체 높이에 맞게 중앙 정렬 */
+}
+
+main.form-signin form {
+	width: 30%;
+}
+
+#signInBtn {
+	background-color: var(--primary-color);
+	border-color: var(--primary-color);
+}
+
+#signInBtn:hover {
+	background-color: var(--primary-color-dark);
+	border-color: var(--primary-color-dark);
+}
+
+#findPwBtn {
+	background-origin: #4567D0;
+	margin-top: 3px;
+}
+
+#findPwBtn {
+	color: var(--primary-color);
+	border-color: var(--primary-color);
+}
+
+#findPwBtn:hover {
+	color: white;
+	background-color: var(--primary-color);
+	border-color: var(--primary-color);
+}

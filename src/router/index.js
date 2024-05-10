@@ -1,6 +1,8 @@
 import HeaderMain from "@/components/common/HeaderMain.vue";
 import MainView from "@/components/main/MainView.vue";
 import MapView from "@/components/map/MapView.vue";
+import SigninView from "@/components/member/SigninView.vue";
+import SignupView from "@/components/member/SignupView.vue";
 import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
@@ -21,6 +23,16 @@ const router = createRouter({
           name: "map",
           component: MapView,
         },
+        {
+          path: "signup",
+          name: "signup",
+          component: SignupView,
+        },
+        {
+          path: "signin",
+          name: "signin",
+          component: SigninView,
+        }
       ],
     },
     // {

@@ -1,12 +1,13 @@
 <script setup>
 import { RouterLink } from "vue-router";
+import { getLocalStorageToken } from "../util/LocalStroage";
 </script>
 
 <template>
      <div id="nav" class="navbar-expand-lg fixed-top border-bottom">
     <div class="container">
       <header class="d-flex align-items-center justify-content-around py-3">
-        <RouterLink to="/test" class="d-inline-flex link-body-emphasis text-decoration-none">
+        <RouterLink to="/" class="d-inline-flex link-body-emphasis text-decoration-none">
           <h1 id="header">나들이</h1>
         </RouterLink>
         <button
@@ -48,38 +49,36 @@ import { RouterLink } from "vue-router";
               >
             </li>
             <li>
-              <a
-                id="nav-list"
-                href="#"
-                class="nav-link px-2"
-                onclick="javascript:goShareTourismInfo();"
-                >여행 정보 공유</a
-              >
+              <RouterLink to="/board" id="nav-list"
+                class="nav-link px-2">
+                여행 정보 공유</RouterLink>
             </li>
           </ul>
           <!-- <c:if test="${empty login}"> -->
-          <form id="signInFail" class="ms-5">
+          <form id="signInFail" class="ms-5" v-if="!getLocalStorageToken()">
+            <RouterLink to="/signup">
             <button
               id="primary-outline-button"
               type="button"
               class="btn btn-outline-primary me-2"
-              onclick="javascript:goSignUp()"
             >
               회원가입
             </button>
+          </RouterLink>
+          <RouterLink to="/signin">
             <button
               id="primary-button"
               type="button"
               class="btn btn-primary"
-              onclick="javascript:goSignIn();"
             >
               로그인
             </button>
+          </RouterLink>
           </form>
           <!-- </c:if> -->
 
           <!-- <c:if test="${not empty login}"> -->
-          <form id="signInSuccess" class="col-md-3 text-end">
+          <form id="signInSuccess" class="col-md-3 text-end" v-else>
             <button
               id="primary-outline-button"
               type="button"
