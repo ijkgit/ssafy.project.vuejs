@@ -1,4 +1,4 @@
-import BoardListView from "@/components/board/BoardListView.vue";
+import BoardListView from "@/components/board/BoardList.vue";
 import HeaderMain from "@/components/common/HeaderMain.vue";
 import MainView from "@/components/main/MainView.vue";
 import MapView from "@/components/map/MapView.vue";
@@ -38,7 +38,36 @@ const router = createRouter({
           path: "board",
           name: "board",
           component: BoardListView,
-        }
+        },
+        {
+          path: "board",
+          name: "board",
+          redirect: { name: "article-list" },
+          children: [
+              {
+                path: "list",
+                name: "article-list",
+                component: () => import("@/components/board/BoardList.vue"),
+              },
+              {
+                path: "write",
+                name: "article-write",
+                component: () => import("@/components/board/BoardWrite.vue"),
+              }
+              ,
+              {
+                path: "view/:articleNo",
+                name: "article-view",
+                component: () => import("@/components/board/BoardDetail.vue"),
+              }
+              ,
+              {
+                path: "modify/:articleNo",
+                name: "article-modify",
+                component: () => import("@/components/board/BoardModify.vue"),
+              }
+            ],
+        },
       ],
     },
     // {
