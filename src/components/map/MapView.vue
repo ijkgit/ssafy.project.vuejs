@@ -52,6 +52,8 @@ const search = () => {
     console.log(areas);
   });
 };
+
+const areaClick = (la, ma) => {};
 </script>
 
 <template>
@@ -104,7 +106,7 @@ const search = () => {
       </button>
     </form>
     <MapKakao :areas="areas" :contentTypeId="searchData.contentTypeId" />
-    <MapTable :areas="areas" />
+    <MapTable :areas="areas" @areaClick="areaClick" />
   </div>
 </template>
 

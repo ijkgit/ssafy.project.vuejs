@@ -17,6 +17,11 @@ const areasWatch = watch(
     deep: true,
   }
 );
+
+const emit = defineEmits(["click"]);
+const clickArea = (la, ma) => {
+  emit("click", la, ma);
+};
 </script>
 
 <template>
@@ -32,7 +37,11 @@ const areasWatch = watch(
         </tr>
       </thead>
       <tbody id="trip-list">
-        <tr v-for="area in props.areas" :key="area.contentId">
+        <tr
+          v-for="area in props.areas"
+          :key="area.contentId"
+          @click="clickArea(area.latitude, area.longitude)"
+        >
           <td v-if="area.firstImage"><img :src="area.firstImage" width="100px" /></td>
           <td v-else>
             <img

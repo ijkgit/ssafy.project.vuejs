@@ -83,52 +83,28 @@ const displayMarker = () => {
   const container = document.getElementById("map");
   const options = {
     center: new kakao.maps.LatLng(36.35559977190671, 127.29859991863871),
-    level: 5,
+    level: 3,
   };
   map = new kakao.maps.Map(container, options);
   var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-  let contentTypeId = props.contentTypeId;
 
+  let contentTypeId = parseInt(props.contentTypeId);
+  let selectedImage;
+  if (contentTypeId === 12) selectedImage = image12;
+  else if (contentTypeId === 14) selectedImage = image14;
+  else if (contentTypeId === 15) selectedImage = image15;
+  else if (contentTypeId === 25) selectedImage = image25;
+  else if (contentTypeId === 28) selectedImage = image28;
+  else if (contentTypeId === 32) selectedImage = image32;
+  else if (contentTypeId === 38) selectedImage = image38;
+  else if (contentTypeId === 39) selectedImage = image39;
+  else selectedImage = imageSrc;
+
+  var imageSize =
+    selectedImage === imageSrc ? new kakao.maps.Size(25, 35) : new kakao.maps.Size(35, 35);
+
+  var markerImage = new kakao.maps.MarkerImage(selectedImage, imageSize);
   for (var i = 0; i < positions.value.length; i++) {
-    var markerImage = null;
-    let selectedImage;
-
-    switch (parseInt(contentTypeId)) {
-      case 12: // 관광지
-        selectedImage = image12;
-        break;
-      case 14: // 문화시설
-        selectedImage = image14;
-        break;
-      case 15: // 축제 공연 행사
-        selectedImage = image15;
-        break;
-      case 25: // 여행코스
-        selectedImage = image25;
-        break;
-      case 28: // 레포츠
-        selectedImage = image28;
-        break;
-      case 32: // 숙박
-        selectedImage = image32;
-        break;
-      case 38: // 쇼핑
-        selectedImage = image38;
-        break;
-      case 39: // 음식점
-        selectedImage = image39;
-        break;
-      default:
-        selectedImage = imageSrc;
-        break;
-    }
-
-    var imageSize =
-      selectedImage === imageSrc ? new kakao.maps.Size(25, 35) : new kakao.maps.Size(35, 35);
-
-    markerImage = new kakao.maps.MarkerImage(selectedImage, imageSize);
-
-    // 마커를 생성합니다
     var marker = new kakao.maps.Marker({
       map: toRaw(map), // 마커를 표시할 지도
       position: positions.value[i].latlng, // 마커를 표시할 위치
