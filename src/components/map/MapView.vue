@@ -4,12 +4,21 @@ import { Axios } from "@/util/http-commons.js";
 
 const http = Axios("map");
 const sidos = ref([]);
-const sido = ref(0);
 const guguns = ref([]);
+const searchData = ref({
+  areaCode: 0,
+  gugunCode: 0,
+  contentTypeId: 0,
+  keyword: "",
+});
 
 onMounted(() => {
   getSido();
 });
+
+const init = () => {
+  searchData.value.gugunCode = 0;
+};
 
 const getSido = () => {
   http.get("sido").then((response) => {
@@ -17,16 +26,26 @@ const getSido = () => {
   });
 };
 
-const sidoWatch = watch(sido, (nv) => {
-  console.log(sido);
-  getGugun();
-});
+const sidoWatch = watch(
+  () => searchData.value.areaCode,
+  () => {
+    init();
+    getGugun();
+  },
+  {
+    deep: true,
+  }
+);
 
 const getGugun = () => {
-  http.get(`gugun/${sido.value}`).then((response) => {
-    console.log(sido.value);
+  http.get(`gugun/${searchData.value.areaCode}`).then((response) => {
     guguns.value = response.data;
-    console.log(guguns.value);
+  });
+};
+
+const search = () => {
+  http.post("attractioninfo", searchData.value).then((response) => {
+    console.log(response);
   });
 };
 </script>
@@ -35,19 +54,29 @@ const getGugun = () => {
   <div class="container-md">
     <!-- 관광지 검색 start -->
     <form class="d-flex my-5 mx-5" onsubmit="return false;" role="search">
-      <select id="search-area" class="form-select me-2" name="sidoCode" v-model="sido">
+      <select
+        id="search-area"
+        class="form-select me-2"
+        name="sidoCode"
+        v-model="searchData.areaCode"
+      >
         <option value="0">검색 할 지역 선택</option>
         <option v-for="sido in sidos" :key="sido.sidoCode" :value="sido.sidoCode">
           {{ sido.sidoName }}
         </option>
       </select>
-      <select id="search-gugun" class="form-select me-2" name="gugunCode" v-model="gugun">
-        <option value="0" selected>구군 선택</option>
-        <option v-for="gugun in guguns" :key="gugun.gugunCode" :value="sido.gugunCode">
+      <select
+        id="search-gugun"
+        class="form-select me-2"
+        name="gugunCode"
+        v-model="searchData.gugunCode"
+      >
+        <option value="0">구군 선택</option>
+        <option v-for="gugun in guguns" :key="gugun.gugunCode" :value="gugun.gugunCode">
           {{ gugun.gugunName }}
         </option>
       </select>
-      <select id="search-content-id" class="form-select me-2">
+      <select id="search-content-id" class="form-select me-2" v-model="searchData.contentTypeId">
         <option value="0" selected>관광지 유형</option>
         <option value="12">관광지</option>
         <option value="14">문화시설</option>
@@ -64,13 +93,9 @@ const getGugun = () => {
         type="search"
         placeholder="검색어"
         aria-label="검색어"
+        v-model="searchData.keyword"
       />
-      <button
-        id="btn-search"
-        class="btn btn-outline-success"
-        type="button"
-        onclick="javascript:search();"
-      >
+      <button id="btn-search" class="btn btn-outline-success" type="button" @click="search">
         검색
       </button>
     </form>
