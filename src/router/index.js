@@ -1,3 +1,4 @@
+import BoardListView from "@/components/board/BoardListView.vue";
 import HeaderMain from "@/components/common/HeaderMain.vue";
 import MainView from "@/components/main/MainView.vue";
 import MapView from "@/components/map/MapView.vue";
@@ -32,6 +33,11 @@ const router = createRouter({
           path: "signin",
           name: "signin",
           component: SigninView,
+        },
+        {
+          path: "board",
+          name: "board",
+          component: BoardListView,
         }
       ],
     },
