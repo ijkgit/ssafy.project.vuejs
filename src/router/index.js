@@ -43,10 +43,15 @@ const router = createRouter({
         {
           path: "plan",
           name: "plan",
-          component: PlanList,
+          redirect: { name: "plan-list" },
           children: [
             {
-              path: "view",
+              path: "list",
+              name: "plan-list",
+              component: () => import("@/components/plan/PlanList.vue"),
+            },
+            {
+              path: "view/:articleNo",
               name: "plan-view",
               component: () => import("@/components/plan/PlanView.vue"),
             },

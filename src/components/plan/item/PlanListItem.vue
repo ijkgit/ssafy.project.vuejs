@@ -13,11 +13,11 @@ defineProps({
         <p class="card-text">{{ plan.content }}</p>
       </div>
       <div class="d-grid justify-content-md-end mb-3 me-3 mt-2">
-        <a
+        <RouterLink
+          :to="{ name: 'plan-view', params: { articleNo: plan.articleNo } }"
           id="secondary-outline-button"
-          href="/plan.do/view/${ board.articleNo }"
           class="btn btn-outline-primary justify-content-md-end"
-          >자세히 보기</a
+          >자세히 보기</RouterLink
         >
       </div>
     </div>
