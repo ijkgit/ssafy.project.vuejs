@@ -44,9 +44,8 @@ import { getLocalStorageToken } from "../util/LocalStroage";
               >
             </li>
             <li>
-              <a id="nav-list" href="#" class="nav-link px-2" onclick="javascript:goLocalTourism();"
-                >지역별 여행지</a
-              >
+              <RouterLink :to="{ name: 'map'}" id="nav-list" href="#" class="nav-link px-2" onclick="javascript:goLocalTourism();"
+                >지역별 여행지</RouterLink>
             </li>
             <li>
               <RouterLink to="/board" id="nav-list"
