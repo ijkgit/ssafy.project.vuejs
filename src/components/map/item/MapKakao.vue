@@ -14,7 +14,9 @@ import { Axios } from "@/util/http-commons.js";
 const props = defineProps({
   areas: Object,
   contentTypeId: String,
+  clickInfo: Object,
 });
+
 const area = ref({
   image: "",
   title: "",
@@ -79,6 +81,13 @@ const areasWatch = watch(
   }
 );
 
+const clickInfoWatch = watch(
+  () => props.clickInfo.la,
+  () => {
+    map.setCenter(new kakao.maps.LatLng(props.clickInfo.la, props.clickInfo.ma));
+  }
+)
+
 const displayMarker = () => {
   const container = document.getElementById("map");
   const options = {
@@ -118,8 +127,6 @@ const displayMarker = () => {
 };
 
 const showDetail = (position) => {
-  console.log(position);
-  console.log(position.image);
   return async () => {
     area.value.image = position.firstimage
       ? position.firstimage

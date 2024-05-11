@@ -53,7 +53,16 @@ const search = () => {
   });
 };
 
-const areaClick = (la, ma) => {};
+const clickInfo = ref({
+  la: 0,
+  ma: 0,
+});
+
+const clickArea = (la, ma) => {
+  console.log(la + " " + ma);
+  clickInfo.value.la = la;
+  clickInfo.value.ma = ma;
+};
 </script>
 
 <template>
@@ -105,8 +114,8 @@ const areaClick = (la, ma) => {};
         검색
       </button>
     </form>
-    <MapKakao :areas="areas" :contentTypeId="searchData.contentTypeId" />
-    <MapTable :areas="areas" @areaClick="areaClick" />
+    <MapKakao :areas="areas" :contentTypeId="searchData.contentTypeId" :clickInfo="clickInfo" />
+    <MapTable :areas="areas" @clickArea="clickArea" />
   </div>
 </template>
 

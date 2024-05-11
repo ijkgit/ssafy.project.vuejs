@@ -9,8 +9,6 @@ const isShow = ref(false);
 const areasWatch = watch(
   () => props.areas.value,
   () => {
-    console.log(props.areas.value);
-    console.log(props.areas[0].firstImage);
     if (props.areas) isShow.value = true;
   },
   {
@@ -18,10 +16,11 @@ const areasWatch = watch(
   }
 );
 
-const emit = defineEmits(["click"]);
+const emit = defineEmits(["clickArea"]);
 const clickArea = (la, ma) => {
-  emit("click", la, ma);
+  emit("clickArea", la, ma);
 };
+
 </script>
 
 <template>
