@@ -129,8 +129,8 @@ const showDetail = (position) => {
 
     await http.get(`/attractiondescription/${position.contentId}`).then((response) => {
       if (response.data.homepage) area.value.homepage = response.data.hompage;
-      if (response.data.overview) area.value.homepage = response.data.overview;
-      if (response.data.telName) area.value.homepage = response.data.telName;
+      if (response.data.overview) area.value.overview = response.data.overview;
+      if (response.data.telName) area.value.telName = response.data.telName;
     });
 
     isShow.value = true;
