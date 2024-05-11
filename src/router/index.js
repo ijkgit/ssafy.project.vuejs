@@ -4,7 +4,7 @@ import MainView from "@/components/main/MainView.vue";
 import MapView from "@/components/map/MapView.vue";
 import SigninView from "@/components/member/SigninView.vue";
 import SignupView from "@/components/member/SignupView.vue";
-import PlanView from "@/components/plan/PlanView.vue";
+import PlanList from "@/components/plan/PlanList.vue";
 import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
@@ -43,7 +43,14 @@ const router = createRouter({
         {
           path: "plan",
           name: "plan",
-          component: PlanView,
+          component: PlanList,
+          children: [
+            {
+              path: "view",
+              name: "plan-view",
+              component: () => import("@/components/plan/PlanView.vue"),
+            },
+          ],
         },
         {
           path: "board",
