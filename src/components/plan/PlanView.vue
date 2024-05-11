@@ -1,5 +1,6 @@
 <script setup>
 import PlanViewBoardItem from "@/components/plan/item/PlanViewBoardItem.vue";
+import PlanViewMapItem from "@/components/plan/item/PlanViewMapItem.vue";
 import { ref, onMounted, onBeforeMount } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { Axios } from "@/util/http-commons.js";
@@ -7,38 +8,22 @@ import { Axios } from "@/util/http-commons.js";
 const route = useRoute();
 const articleNo = route.params.articleNo;
 const http = Axios("plan");
-const plan = ref([]);
-
-onBeforeMount(async () => {
-  console.log("onBeforeMount 호출");
-  await http.get(`view/${articleNo}`).then((response) => {
-    plan.value = response.data;
-    console.log(plan.value[0]);
-    console.log(plan.value);
-  });
-  await getView();
-  console.log("onBeforeMount 끝");
-});
+const plan = ref([{}, [{}]]);
 
 onMounted(() => {
-  console.log(articleNo);
+  getView();
 });
 
 const getView = async () => {
   await http.get(`view/${articleNo}`).then((response) => {
     plan.value = response.data;
-    console.log(plan.value[0]);
-    console.log(plan.value);
   });
 };
-// const PlanViewBoardItem = defineAsyncComponent(() =>
-//   import("@/components/plan/item/PlanViewBoardItem.vue")
-// );
 </script>
 
 <template>
   <PlanViewBoardItem :plan="plan[0]" />
-  .
+  <PlanViewMapItem :plan="plan[1]" />
 </template>
 
 <style scoped></style>

@@ -2,8 +2,6 @@
 const props = defineProps({
   plan: Object,
 });
-
-console.log(props.plan);
 </script>
 
 <template>
@@ -11,7 +9,9 @@ console.log(props.plan);
     <div class="row justify-content-center">
       <div class="col-lg-8 col-md-10 col-sm-12">
         <div class="row my-2">
-          <h2 class="text-secondary px-5" id="subject">{{ plan.subject }}</h2>
+          <h2 class="text-secondary px-5" id="subject">
+            {{ plan.subject }}
+          </h2>
         </div>
         <div class="row">
           <div class="col-md-8">
@@ -21,16 +21,17 @@ console.log(props.plan);
                 src="https://raw.githubusercontent.com/twbs/icons/main/icons/person-fill.svg"
               />
               <p>
-                <span class="fw-bold" id="userId"></span>
+                <span class="fw-bold" id="userId">{{ plan.userId }}</span>
                 <br />
                 <span class="text-secondary fw-light">
-                  <span id="registerTime"></span> 조회 : <span id="hit"></span>
+                  <span id="registerTime">{{ plan.registerTime }}</span> 조회 :
+                  <span id="hit">{{ plan.hit }}</span>
                 </span>
               </p>
             </div>
             <div class="divider mb-3"></div>
             <div class="text-secondary">
-              <span id="content"></span>
+              <span id="content">{{ plan.content }}</span>
             </div>
             <div class="divider mt-3 mb-3"></div>
           </div>
