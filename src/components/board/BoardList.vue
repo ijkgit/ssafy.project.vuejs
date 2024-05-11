@@ -1,5 +1,4 @@
 <script setup>
-import { Axios } from '@/util/http-commons';
 import { ref, onMounted } from "vue";
 import {getArticleListAPI} from "@/apis/board.js";
 import BoardListItem from "@/components/board/item/BoardListItem.vue";
