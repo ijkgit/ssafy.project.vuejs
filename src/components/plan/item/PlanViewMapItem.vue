@@ -34,6 +34,19 @@ const initMap = () => {
   places.value.forEach((place) => {
     addPlace(place);
   });
+  var sw = new kakao.maps.LatLng(places.value[0].y, places.value[0].x);
+  var ne;
+  if (places.length == 1) ne = sw;
+  else
+    ne = new kakao.maps.LatLng(
+      places.value[places.value.length - 1].y,
+      places.value[places.value.length - 1].x
+    );
+  console.log(ne);
+  console.log(sw);
+  var bounds = new kakao.maps.LatLngBounds(sw, ne);
+  map.setBounds(bounds);
+  map.setLevel(10);
 };
 
 const addPlace = (place) => {
