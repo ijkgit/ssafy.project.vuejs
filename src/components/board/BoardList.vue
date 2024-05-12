@@ -3,6 +3,7 @@ import { ref, onMounted } from "vue";
 import {getArticleListAPI} from "@/apis/board.js";
 import BoardListItem from "@/components/board/item/BoardListItem.vue";
 import VSelect from "@/components/common/VSelect.vue";
+import PageNavigation from "@/components/common/PageNavigation.vue";
 
 const articles = ref([]);
 const currentPage = ref(1);
@@ -32,8 +33,10 @@ const changeKey = (val) => {
 
 const getArticleList  = async()=>{
     const response = await getArticleListAPI(param.value);
+    console.log(response)
     articles.value = response.data.articles;
-    console.log(articles.value)
+	currentPage.value = response.data.currentPage;
+	totalPage.value = response.data.totalPage;
 }
 const param = ref({
   pgno: currentPage.value,
@@ -46,6 +49,13 @@ const param = ref({
 onMounted(() => {
   getArticleList();
 });
+
+const onPageChange = (val) => {
+  console.log(val + "번 페이지로 이동 준비 끝!!!");
+  currentPage.value = val;
+  param.value.pgno = val;
+	getArticleList();
+};
 
 
 </script>
@@ -139,7 +149,11 @@ onMounted(() => {
 					</tbody>
 				</table>
 			</div>
-			<!-- <div class="row">${navigation.navigator }</div> -->
+			<PageNavigation
+				:current-page="currentPage"
+				:total-page="totalPage"
+				@pageChange="onPageChange"
+			></PageNavigation>
 		</div>
 	</div>
 

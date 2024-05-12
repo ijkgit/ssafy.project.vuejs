@@ -11,7 +11,7 @@ console.log(props.plan);
     <div class="row justify-content-center">
       <div class="col-lg-8 col-md-10 col-sm-12">
         <div class="row my-2">
-          <h2 class="text-secondary px-5" id="subject">{{ plan.subject }}</h2>
+          <h2 class="text-secondary px-5" id="subject">{{ props.plan.subject }}</h2>
         </div>
         <div class="row">
           <div class="col-md-8">
