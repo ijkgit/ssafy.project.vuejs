@@ -23,7 +23,7 @@ const article = ref({
 const WriteArticleHandler = async() =>{
     const response = await writeArticleAPI(article.value);
 	console.log(response);
-    // router.push({name : "article-list"})
+    router.push({name : "article-list"})
 }
 
 const getArticle = async() =>{
@@ -78,7 +78,7 @@ onMounted( ()=>{
 						<label for="subject" class="form-label">제목 : </label> <input
                             v-model="article.subject"
 							type="text" class="form-control" id="subject" name="subject"
-							 />
+						/>
 					</div>
 					<div class="mb-3">
 						<label for="content" class="form-label">내용 : </label>

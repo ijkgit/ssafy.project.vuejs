@@ -3,6 +3,7 @@ import { ref, onMounted } from "vue";
 import {getArticleListAPI} from "@/apis/board.js";
 import BoardListItem from "@/components/board/item/BoardListItem.vue";
 import VSelect from "@/components/common/VSelect.vue";
+import PageNavigation from "@/components/common/PageNavigation.vue";
 
 const articles = ref([]);
 const currentPage = ref(1);
@@ -32,8 +33,10 @@ const changeKey = (val) => {
 
 const getArticleList  = async()=>{
     const response = await getArticleListAPI(param.value);
+    console.log(response)
     articles.value = response.data.articles;
-    console.log(articles.value)
+	currentPage.value = response.data.currentPage;
+	totalPage.value = response.data.totalPage;
 }
 const param = ref({
   pgno: currentPage.value,
@@ -46,6 +49,13 @@ const param = ref({
 onMounted(() => {
   getArticleList();
 });
+
+const onPageChange = (val) => {
+  console.log(val + "번 페이지로 이동 준비 끝!!!");
+  currentPage.value = val;
+  param.value.pgno = val;
+	getArticleList();
+};
 
 
 </script>
@@ -71,9 +81,9 @@ onMounted(() => {
 							<input type="hidden" name="pgno" value="1" />
                             <VSelect :selectOption="selectOption" @onKeySelect="changeKey" />
 							<div class="input-group input-group-sm">
-								<input id="word" name="word" type="text" class="form-control"
+								<input v-model="param.word" id="word" name="word" type="text" class="form-control"
 									placeholder="검색어..." />
-								<button id="btn-search" class="btn btn-dark" type="button">검색</button>
+								<button id="btn-search" class="btn btn-dark" type="button" @click="getArticleList">검색</button>
 							</div>
 						</form>
 						<form id="form-sort " class="mt-1 d-flex justify-content-end">
@@ -139,7 +149,11 @@ onMounted(() => {
 					</tbody>
 				</table>
 			</div>
-			<!-- <div class="row">${navigation.navigator }</div> -->
+			<PageNavigation
+				:current-page="currentPage"
+				:total-page="totalPage"
+				@pageChange="onPageChange"
+			></PageNavigation>
 		</div>
 	</div>
 
