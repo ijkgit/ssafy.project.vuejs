@@ -269,9 +269,14 @@ function getTimeHTML(distance) {
   // 계산한 도보 시간이 60분 보다 크면 시간으로 표시합니다
   if (walkkTime > 60) {
     walkHour =
-      '<span class="number">' + Math.floor(walkkTime / 60) + "</span>시간 ";
+      '<span class="number" style="font-weight: bold; color: #ee6152;">' +
+      Math.floor(walkkTime / 60) +
+      "</span>시간 ";
   }
-  walkMin = '<span class="number">' + (walkkTime % 60) + "</span>분";
+  walkMin =
+    '<span class="number" style="font-weight: bold; color: #ee6152;">' +
+    (walkkTime % 60) +
+    "</span>분";
 
   // 자전거의 평균 시속은 16km/h 이고 이것을 기준으로 자전거의 분속은 267m/min입니다
   var bycicleTime = (distance / 227) | 0;
@@ -281,24 +286,49 @@ function getTimeHTML(distance) {
   // 계산한 자전거 시간이 60분 보다 크면 시간으로 표출합니다
   if (bycicleTime > 60) {
     bycicleHour =
-      '<span class="number">' + Math.floor(bycicleTime / 60) + "</span>시간 ";
+      '<span class="number" style="font-weight: bold; color: #ee6152;">' +
+      Math.floor(bycicleTime / 60) +
+      "</span>시간 ";
   }
-  bycicleMin = '<span class="number">' + (bycicleTime % 60) + "</span>분";
+  bycicleMin =
+    '<span class="number" style="font-weight: bold; color: #ee6152;">' +
+    (bycicleTime % 60) +
+    "</span>분";
 
   // 거리와 도보 시간, 자전거 시간을 가지고 HTML Content를 만들어 리턴합니다
-  var content = '<ul class="dotOverlay distanceInfo">';
+  var content = `<ul class="dotOverlay distanceInfo" style="
+position: relative;
+  bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  border-bottom: 2px solid #ddd;
+  float: left;
+  font-size: 12px;
+  padding: 5px;
+  background: #fff;
+  position: relative;
+  top: 5px;
+  left: 5px;
+  list-style: none;
+  margin: 0;
+  ">`;
   content += "    <li>";
   content +=
-    '        <span class="label">총거리</span><span class="number">' +
+    '        <span class="label" style="display: inline-block;width: 50px;">총거리</span><span class="number" style="font-weight: bold; color: #ee6152;">' +
     distance +
-    "</span>m";
-  content += "    </li>";
-  content += "    <li>";
-  content += '        <span class="label">도보</span>' + walkHour + walkMin;
+    "</span>";
   content += "    </li>";
   content += "    <li>";
   content +=
-    '        <span class="label">자전거</span>' + bycicleHour + bycicleMin;
+    '        <span class="label" style="display: inline-block;width: 50px;">도보</span>' +
+    walkHour +
+    walkMin;
+  content += "    </li>";
+  content += "    <li>";
+  content +=
+    '        <span class="label" style="display: inline-block;width: 50px;">자전거</span>' +
+    bycicleHour +
+    bycicleMin;
   content += "    </li>";
   content += "</ul>";
 
@@ -335,20 +365,6 @@ function getTimeHTML(distance) {
   background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/mini_circle.png");
 }
 
-.dotOverlay {
-  position: relative;
-  bottom: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  border-bottom: 2px solid #ddd;
-  float: left;
-  font-size: 12px;
-  padding: 5px;
-  background: #fff;
-}
-
 .dotOverlay:nth-of-type(n) {
-  border: 0;
-  box-shadow: 0px 1px 2px #888;
 }
 </style>
