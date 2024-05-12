@@ -6,11 +6,12 @@ import { useRouter,useRoute } from "vue-router";
 const route = useRoute();
 const router = useRouter();
 const articleNo = route.params.articleNo;
-defineProps({ type: String });
+
+const props = defineProps({ type: String });
 
 const article = ref({
   articleNo: "",
-  userId: "ssafy",
+  userId: "admin",
   subject: "",
   content: "",
   hit: 0,
@@ -21,7 +22,8 @@ const article = ref({
 
 const WriteArticleHandler = async() =>{
     const response = await writeArticleAPI(article.value);
-    router.push({name : "article-list"})
+	console.log(response);
+    // router.push({name : "article-list"})
 }
 
 const getArticle = async() =>{
@@ -37,7 +39,7 @@ const UpdateArticleHandler = async() =>{
 }
 
 onMounted( ()=>{
-    getArticle();
+	if(props.type ==='modify') getArticle();
 })
 
 </script>
