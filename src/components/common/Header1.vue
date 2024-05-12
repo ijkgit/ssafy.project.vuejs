@@ -35,16 +35,11 @@ import { getLocalStorageToken } from "../util/LocalStroage";
           <ul class="nav col-12 col-md-auto mb-2 mb-md-0">
             <li><a id="nav-list" href="#" class="nav-link px-2">핫플 자랑하기</a></li>
             <li>
-              <a
-                id="nav-list"
-                href="#"
-                class="nav-link px-2"
-                onclick="javascript:goMyTourismPlanList();"
-                >나의 여행 계획</a
-              >
+              <RouterLink :to="{ name: 'plan'}" id="nav-list" href="#" class="nav-link px-2"
+                >나의 여행 계획</RouterLink>
             </li>
             <li>
-              <RouterLink :to="{ name: 'map'}" id="nav-list" href="#" class="nav-link px-2" onclick="javascript:goLocalTourism();"
+              <RouterLink :to="{ name: 'map'}" id="nav-list" href="#" class="nav-link px-2"
                 >지역별 여행지</RouterLink>
             </li>
             <li>

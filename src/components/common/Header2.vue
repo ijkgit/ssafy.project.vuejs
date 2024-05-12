@@ -9,7 +9,10 @@ console.log("if u header2");
   <div id="nav" class="navbar-expand-lg border-bottom shadow-sm">
     <div class="container">
       <header class="d-flex align-items-center justify-content-around py-3">
-        <RouterLink to="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+        <RouterLink
+          to="/"
+          class="d-inline-flex link-body-emphasis text-decoration-none"
+        >
           <h1 id="header">나들이</h1>
         </RouterLink>
         <button
@@ -35,25 +38,32 @@ console.log("if u header2");
 
         <div id="nav-menu" class="collapse navbar-collapse justify-content-end">
           <ul class="nav col-12 col-md-auto mb-2 mb-md-0">
-            <li><a id="nav-list" href="#" class="nav-link px-2">핫플 자랑하기</a></li>
             <li>
-              <a
+              <a id="nav-list" href="#" class="nav-link px-2">핫플 자랑하기</a>
+            </li>
+            <li>
+              <RouterLink
+                :to="{ name: 'plan' }"
                 id="nav-list"
                 href="#"
                 class="nav-link px-2"
-                onclick="javascript:goMyTourismPlanList();"
-                >나의 여행 계획</a
+                >나의 여행 계획</RouterLink
               >
             </li>
             <li>
-              <RouterLink :to="{ name: 'map'}" id="nav-list" href="#" class="nav-link px-2" onclick="javascript:goLocalTourism();"
-                >지역별 여행지</RouterLink>
+              <RouterLink
+                :to="{ name: 'map' }"
+                id="nav-list"
+                href="#"
+                class="nav-link px-2"
+                onclick="javascript:goLocalTourism();"
+                >지역별 여행지</RouterLink
+              >
             </li>
             <li>
-              <RouterLink to ="/board"
-                id="nav-list"
-                class="nav-link px-2">여행 정보 공유
-                </RouterLink>
+              <RouterLink to="/board" id="nav-list" class="nav-link px-2"
+                >여행 정보 공유
+              </RouterLink>
             </li>
           </ul>
           <!-- <c:if test="${empty login}"> -->
@@ -68,11 +78,7 @@ console.log("if u header2");
               </button>
             </RouterLink>
             <RouterLink to="/signin">
-              <button
-                id="primary-button"
-                type="button"
-                class="btn btn-primary"
-              >
+              <button id="primary-button" type="button" class="btn btn-primary">
                 로그인
               </button>
             </RouterLink>
