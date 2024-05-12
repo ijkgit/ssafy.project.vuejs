@@ -166,84 +166,6 @@ const makeRoute = (place) => {
   console.log(clickLine);
 };
 
-function deletePlace(index) {
-  var cursor = getCursor(index);
-  c = confirm("정말 삭제하시겠어요?");
-  if (c) {
-    deleteRoute(cursor);
-    removeMarker2(cursor);
-    if (curInfoWindow) {
-      curInfoWindow.close();
-    }
-    removeTimeLine(index);
-  }
-}
-
-function removeTimeLine(index) {
-  var newDeleteButton = document.querySelector(`#timeline-${index}`);
-  if (newDeleteButton) {
-    newDeleteButton.remove();
-  }
-}
-
-function removeMarker2(index) {
-  markers2[index].setMap(null);
-  markers2.splice(index, 1);
-  for (var i = 0; i < markers2.length; i++) {
-    markers2[i].setMap(map); // 지도 위에 마커를 표출합니다
-  }
-}
-
-function deleteRoute(index) {
-  // 그려지고 있는 선의 좌표 배열을 얻어옵니다
-  var path = clickLine.getPath();
-
-  if (path.length == 1) {
-    // 지도 위에 선이 표시되고 있다면 지도에서 제거합니다
-    deleteClickLine();
-
-    // 지도 위에 커스텀오버레이가 표시되고 있다면 지도에서 제거합니다
-    deleteDistnce();
-
-    // 지도 위에 선을 그리기 위해 클릭한 지점과 해당 지점의 거리정보가 표시되고 있다면 지도에서 제거합니다
-    deleteCircleDot();
-    placeIndex = 0;
-    return;
-  }
-
-  // 좌표 배열에 클릭한 위치를 추가합니다
-  if (dots[index].circle) {
-    dots[index].circle.setMap(null);
-  }
-
-  if (dots[index].distance) {
-    dots[index].distance.setMap(null);
-  }
-  path.splice(index, 1);
-  dots.splice(index, 1);
-
-  // 다시 선에 좌표 배열을 설정하여 클릭 위치까지 선을 그리도록 설정합니다
-  clickLine.setPath(path);
-
-  // 마우스 클릭으로 그린 선의 좌표 배열을 얻어옵니다
-  var path = clickLine.getPath();
-
-  // 마지막 클릭 지점에 대한 거리 정보 커스텀 오버레이를 지웁니다
-  if (dots[dots.length - 1].distance) {
-    dots[dots.length - 1].distance.setMap(null);
-    dots[dots.length - 1].distance = null;
-  }
-
-  var distance = Math.round(clickLine.getLength()), // 선의 총 거리를 계산합니다
-    content = getTimeHTML(distance); // 커스텀오버레이에 추가될 내용입니다
-
-  distanceOverlay.setMap(null);
-  distanceOverlay = null;
-
-  // 그려진 선의 거리정보를 지도에 표시합니다
-  showDistance(content, path[path.length - 1]);
-}
-
 // 클릭으로 그려진 선을 지도에서 제거하는 함수입니다
 function deleteClickLine() {
   if (clickLine) {
@@ -405,4 +327,28 @@ function getTimeHTML(distance) {
 
 <style scoped>
 @import "@/assets/plan/map.css";
+.dot {
+  overflow: hidden;
+  float: left;
+  width: 12px;
+  height: 12px;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/mini_circle.png");
+}
+
+.dotOverlay {
+  position: relative;
+  bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  border-bottom: 2px solid #ddd;
+  float: left;
+  font-size: 12px;
+  padding: 5px;
+  background: #fff;
+}
+
+.dotOverlay:nth-of-type(n) {
+  border: 0;
+  box-shadow: 0px 1px 2px #888;
+}
 </style>
