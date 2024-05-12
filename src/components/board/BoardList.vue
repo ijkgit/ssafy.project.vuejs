@@ -81,9 +81,9 @@ const onPageChange = (val) => {
 							<input type="hidden" name="pgno" value="1" />
                             <VSelect :selectOption="selectOption" @onKeySelect="changeKey" />
 							<div class="input-group input-group-sm">
-								<input id="word" name="word" type="text" class="form-control"
+								<input v-model="param.word" id="word" name="word" type="text" class="form-control"
 									placeholder="검색어..." />
-								<button id="btn-search" class="btn btn-dark" type="button">검색</button>
+								<button id="btn-search" class="btn btn-dark" type="button" @click="getArticleList">검색</button>
 							</div>
 						</form>
 						<form id="form-sort " class="mt-1 d-flex justify-content-end">
