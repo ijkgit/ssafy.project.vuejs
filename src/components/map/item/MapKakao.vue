@@ -84,9 +84,11 @@ const areasWatch = watch(
 const clickInfoWatch = watch(
   () => props.clickInfo.la,
   () => {
-    map.setCenter(new kakao.maps.LatLng(props.clickInfo.la, props.clickInfo.ma));
+    map.setCenter(
+      new kakao.maps.LatLng(props.clickInfo.la, props.clickInfo.ma)
+    );
   }
-)
+);
 
 const displayMarker = () => {
   const container = document.getElementById("map");
@@ -95,7 +97,8 @@ const displayMarker = () => {
     level: 3,
   };
   map = new kakao.maps.Map(container, options);
-  var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+  var imageSrc =
+    "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 
   let contentTypeId = parseInt(props.contentTypeId);
   let selectedImage;
@@ -110,7 +113,9 @@ const displayMarker = () => {
   else selectedImage = imageSrc;
 
   var imageSize =
-    selectedImage === imageSrc ? new kakao.maps.Size(25, 35) : new kakao.maps.Size(35, 35);
+    selectedImage === imageSrc
+      ? new kakao.maps.Size(25, 35)
+      : new kakao.maps.Size(35, 35);
 
   var markerImage = new kakao.maps.MarkerImage(selectedImage, imageSize);
   for (var i = 0; i < positions.value.length; i++) {
@@ -120,7 +125,11 @@ const displayMarker = () => {
       image: markerImage, // 마커 이미지
     });
 
-    kakao.maps.event.addListener(marker, "click", showDetail(positions.value[i]));
+    kakao.maps.event.addListener(
+      marker,
+      "click",
+      showDetail(positions.value[i])
+    );
   }
   // 첫번째 검색 정보를 이용하여 지도 중심을 이동 시킵니다
   toRaw(map).setCenter(positions.value[0].latlng);
@@ -134,11 +143,14 @@ const showDetail = (position) => {
     area.value.title = position.title;
     area.value.addr = `${position.addr1} ${position.addr2}`;
 
-    await http.get(`/attractiondescription/${position.contentId}`).then((response) => {
-      if (response.data.homepage) area.value.homepage = response.data.hompage;
-      if (response.data.overview) area.value.overview = response.data.overview;
-      if (response.data.telName) area.value.telName = response.data.telName;
-    });
+    await http
+      .get(`/attractiondescription/${position.contentId}`)
+      .then((response) => {
+        if (response.data.homepage) area.value.homepage = response.data.hompage;
+        if (response.data.overview)
+          area.value.overview = response.data.overview;
+        if (response.data.telName) area.value.telName = response.data.telName;
+      });
 
     isShow.value = true;
   };
@@ -151,7 +163,12 @@ const close = () => {
 
 <template>
   <div id="map" class="mt-3" style="width: 100%; height: 600px"></div>
-  <MapModal :area="area" v-show="isShow" @close="close" :class="{ show: isShow }"></MapModal>
+  <MapModal
+    :area="area"
+    v-show="isShow"
+    @close="close"
+    :class="{ show: isShow }"
+  ></MapModal>
 </template>
 
 <style scoped></style>

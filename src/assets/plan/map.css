@@ -1,0 +1,513 @@
+.map_wrap,
+.map_wrap * {
+  margin: 0;
+  padding: 0;
+  /* font-family: 'Malgun Gothic', dotum, '돋움', sans-serif; */
+  font-size: 12px;
+}
+
+.map_wrap a,
+.map_wrap a:hover,
+.map_wrap a:active {
+  color: #000;
+  text-decoration: none;
+}
+
+.map_wrap {
+  position: relative;
+  width: 100%;
+  height: 600px;
+}
+
+#menu_wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  height: 580px;
+  margin: 10px 0 30px 10px;
+  padding: 5px;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 1;
+  font-size: 12px;
+  border-radius: 10px;
+}
+
+.bg_white {
+  background: #fff;
+}
+
+#menu_wrap hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 2px solid #5f5f5f;
+  margin: 3px 0;
+}
+
+#menu_wrap .option {
+  text-align: center;
+}
+
+#menu_wrap .option p {
+  margin: 10px 0;
+}
+
+#menu_wrap .option button {
+  margin-left: 5px;
+}
+
+#placesList li {
+  list-style: none;
+}
+
+#placesList .item {
+  position: relative;
+  border-bottom: 1px solid #888;
+  overflow: hidden;
+  cursor: pointer;
+  min-height: 65px;
+}
+
+#placesList .item span {
+  display: block;
+  margin-top: 4px;
+}
+
+#placesList .item h5,
+#placesList .item .info {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#placesList .item .info {
+  padding: 10px 0 10px 55px;
+}
+
+#placesList .info .gray {
+  color: #8a8a8a;
+}
+
+#placesList .info .jibun {
+  padding-left: 26px;
+  background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png)
+    no-repeat;
+}
+
+#placesList .info .tel {
+  color: #009900;
+}
+
+#placesList .item .markerbg {
+  float: left;
+  position: absolute;
+  width: 36px;
+  height: 37px;
+  margin: 10px 0 0 10px;
+  background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
+    no-repeat;
+}
+
+#placesList .item .marker_1 {
+  background-position: 0 -10px;
+}
+
+#placesList .item .marker_2 {
+  background-position: 0 -56px;
+}
+
+#placesList .item .marker_3 {
+  background-position: 0 -102px;
+}
+
+#placesList .item .marker_4 {
+  background-position: 0 -148px;
+}
+
+#placesList .item .marker_5 {
+  background-position: 0 -194px;
+}
+
+#placesList .item .marker_6 {
+  background-position: 0 -240px;
+}
+
+#placesList .item .marker_7 {
+  background-position: 0 -286px;
+}
+
+#placesList .item .marker_8 {
+  background-position: 0 -332px;
+}
+
+#placesList .item .marker_9 {
+  background-position: 0 -378px;
+}
+
+#placesList .item .marker_10 {
+  background-position: 0 -423px;
+}
+
+#placesList .item .marker_11 {
+  background-position: 0 -470px;
+}
+
+#placesList .item .marker_12 {
+  background-position: 0 -516px;
+}
+
+#placesList .item .marker_13 {
+  background-position: 0 -562px;
+}
+
+#placesList .item .marker_14 {
+  background-position: 0 -608px;
+}
+
+#placesList .item .marker_15 {
+  background-position: 0 -654px;
+}
+
+#myPlacesList li {
+  list-style: none;
+}
+
+#myPlacesList .item {
+  position: relative;
+  border-bottom: 1px solid #888;
+  overflow: hidden;
+  cursor: pointer;
+  min-height: 65px;
+  display: flex;
+}
+
+#myPlacesList .item span {
+  display: block;
+  margin-top: 4px;
+}
+
+#myPlacesList .item h5,
+#myPlacesList .item .info {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 700;
+  padding-top: 0.5rem;
+  display: inline;
+  margin-left: 0.2rem;
+}
+
+#myPlacesList .item .info {
+  padding: 10px 0 10px 50px;
+}
+
+#myPlacesList .info .gray {
+  color: #8a8a8a;
+}
+
+#myPlacesList .info .jibun {
+  padding-left: 26px;
+  background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png)
+    no-repeat;
+}
+
+#myPlacesList .info .tel {
+  color: #009900;
+}
+
+#myPlacesList .item .markerbg {
+  float: left;
+  position: absolute;
+  width: 36px;
+  height: 37px;
+  margin: 10px 0 0 10px;
+  background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
+    no-repeat;
+}
+
+#myPlacesList .item .marker_1 {
+  background-position: 0 -10px;
+}
+
+#myPlacesList .item .marker_2 {
+  background-position: 0 -56px;
+}
+
+#myPlacesList .item .marker_3 {
+  background-position: 0 -102px;
+}
+
+#myPlacesList .item .marker_4 {
+  background-position: 0 -148px;
+}
+
+#myPlacesList .item .marker_5 {
+  background-position: 0 -194px;
+}
+
+#myPlacesList .item .marker_6 {
+  background-position: 0 -240px;
+}
+
+#myPlacesList .item .marker_7 {
+  background-position: 0 -286px;
+}
+
+#myPlacesList .item .marker_8 {
+  background-position: 0 -332px;
+}
+
+#myPlacesList .item .marker_9 {
+  background-position: 0 -378px;
+}
+
+#myPlacesList .item .marker_10 {
+  background-position: 0 -423px;
+}
+
+#myPlacesList .item .marker_11 {
+  background-position: 0 -470px;
+}
+
+#myPlacesList .item .marker_12 {
+  background-position: 0 -516px;
+}
+
+#myPlacesList .item .marker_13 {
+  background-position: 0 -562px;
+}
+
+#myPlacesList .item .marker_14 {
+  background-position: 0 -608px;
+}
+
+#myPlacesList .item .marker_15 {
+  background-position: 0 -654px;
+}
+
+#pagination {
+  margin: 10px auto;
+  text-align: center;
+}
+
+#pagination a {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+#pagination .on {
+  font-weight: bold;
+  cursor: default;
+  color: #777;
+}
+
+#infowindow {
+  /* width: 10rem; */
+  min-width: 10rem;
+  width: auto;
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.dot {
+  overflow: hidden;
+  float: left;
+  width: 12px;
+  height: 12px;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/mini_circle.png");
+}
+
+.dotOverlay {
+  position: relative;
+  bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  border-bottom: 2px solid #ddd;
+  float: left;
+  font-size: 12px;
+  padding: 5px;
+  background: #fff;
+}
+
+.dotOverlay:nth-of-type(n) {
+  border: 0;
+  box-shadow: 0px 1px 2px #888;
+}
+
+.number {
+  font-weight: bold;
+  color: #ee6152;
+}
+
+.dotOverlay:after {
+  content: "";
+  position: absolute;
+  margin-left: -6px;
+  left: 50%;
+  bottom: -8px;
+  width: 11px;
+  height: 8px;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white_small.png");
+}
+
+.distanceInfo {
+  position: relative;
+  top: 5px;
+  left: 5px;
+  list-style: none;
+  margin: 0;
+}
+
+.distanceInfo .label {
+  display: inline-block;
+  width: 50px;
+}
+
+.distanceInfo:after {
+  content: none;
+}
+
+.modalbtn {
+  position: absolute;
+  bottom: 0.5rem;
+  width: 95%;
+  height: 7%;
+  opacity: 70%;
+}
+
+.shortestPathbtn {
+  position: absolute;
+  bottom: 3.5rem;
+  width: 95%;
+  height: 7%;
+  opacity: 70%;
+}
+
+/* time line */
+/* The actual timeline (the vertical ruler) */
+.main-timeline-2 {
+  position: relative;
+}
+
+/* The actual timeline (the vertical ruler) */
+.main-timeline-2::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  background-color: #26c6da;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+/* Container around content */
+.timeline-2 {
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+
+/* The circles on the timeline */
+.timeline-2::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -11px;
+  background-color: #26c6da;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Place the container to the left */
+.left-2 {
+  padding: 0px 40px 20px 0px;
+  left: 0;
+}
+
+/* Place the container to the right */
+.right-2 {
+  padding: 0px 0px 20px 40px;
+  left: 50%;
+}
+
+/* Add arrows to the left container (pointing right) */
+.left-2::before {
+  content: " ";
+  position: absolute;
+  top: 18px;
+  z-index: 1;
+  right: 30px;
+  border: medium solid white;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right-2::before {
+  content: " ";
+  position: absolute;
+  top: 18px;
+  z-index: 1;
+  left: 30px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+/* Fix the circle for containers on the right side */
+.right-2::after {
+  left: -14px;
+}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+  /* Place the timelime to the left */
+  .main-timeline-2::after {
+    left: 31px;
+  }
+
+  /* Full-width containers */
+  .timeline-2 {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+
+  /* Make sure that all arrows are pointing leftwards */
+  .timeline-2::before {
+    left: 60px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+
+  /* Make sure all circles are at the same spot */
+  .left-2::after,
+  .right-2::after {
+    left: 18px;
+  }
+  .left-2::before {
+    right: auto;
+  }
+
+  /* Make all right containers behave like the left ones */
+  .right-2 {
+    left: 0%;
+  }
+}
